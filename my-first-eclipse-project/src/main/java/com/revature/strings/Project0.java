@@ -22,7 +22,7 @@ public class Project0 {
 
 	switch (s) {
 	case "1":
-		System.out.println(3);
+		System.out.println(Math.random()*120);
 		break;
 	case "2" :
 		System.out.println("Enter a String we will reverse it :");
