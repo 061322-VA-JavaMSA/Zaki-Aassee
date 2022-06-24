@@ -5,8 +5,7 @@
 
 
 
-ignore.properties
-
+credentials.properties
 
 ### Eclipse ###
 .metadata
