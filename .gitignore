@@ -1,6 +1,13 @@
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,visualbasic,java,macos,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,visualbasic,java,macos,windows
 
+
+
+
+
+ignore.properties
+
+
 ### Eclipse ###
 .metadata
 bin/
