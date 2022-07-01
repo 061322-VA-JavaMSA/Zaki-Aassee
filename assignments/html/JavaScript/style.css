@@ -1,0 +1,39 @@
+body {
+    background-color:deepskyblue;
+    
+}
+
+h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: oblique;
+    color: bisque;
+}
+
+.poke{
+    text-align: center;
+}
+input {
+    margin: 4px;
+    padding: 10px;
+    border: 5px solid greenyellow ;
+    border-radius: 10px 10px 10px 10px;
+}
+.pokemonBox{
+
+    border: 4px solid black;
+    margin: 4px;
+    padding: 8px;
+    display: inline-flex;
+
+
+}
+.ptable {
+
+
+    margin-top: 20px;
+  
+}
+
+table tr td {
+    border: 4px solid black;
+}
