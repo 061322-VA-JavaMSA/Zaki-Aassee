@@ -33,12 +33,7 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		CorsFix.addCorsHeader(req.getRequestURI(), resp);
 		resp.addHeader("Content-Type", "application/json");
-		
-//		PrintWriter pw = resp.getWriter();
-//		pw.write("welcome to servlet");
-//		pw.close();
-//	
-//		
+
 		String pathInfo = req.getPathInfo();
 
 		if (pathInfo == null) {
@@ -129,31 +124,10 @@ public class EmployeeServlet extends HttpServlet {
 		InputStream reqbody = req.getInputStream();
 		
 		Employee updateEmployee = om.readValue(reqbody, Employee.class);
-//		
-//		try {
-//			es.createEmployee(newEmployee);
-//			
-//			resp.setStatus(201);
-//
-//			PrintWriter pw = resp.getWriter();
-//			pw.print(newEmployee);
-//		
-//			
-//			
-//		} catch (UserNotCreatedException e) {
-//			// 
-//			System.out.println("Unable to create");
-//			e.printStackTrace();
-//		}
-//	
-		
+
 			es.updateEmployee(updateEmployee);
 			resp.setStatus(201);
-			
-			
-		
-		
-		
+	
 	}
 
 }
