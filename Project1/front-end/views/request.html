@@ -28,7 +28,7 @@
                    
                 </div>
                 <hr>
-
+                <form id="requestform" action="">
                 <div class="d-flex justify-content-center">
                     <label>Reimbursement Number:</label>
                 </div>
@@ -49,21 +49,28 @@
                 <div class="d-flex justify-content-center">
                     <input class="inputstyle" type="number" name="ramout" id="ramount">
                 </div>
-                <div class="d-flex justify-content-center">
-                    <label>Request Date:</label>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <input class="inputstyle" type="datetime-local" name="rdate" id="rdate">
-                </div>
+              
                 <div class="d-flex justify-content-center">
                     <label>Reimbursement Description:</label>
                 </div>
                 <div class="d-flex justify-content-center">
                     <input class="inputstyle" type="text" name="rd" id="rd">
                 </div>
+                <div class="d-flex justify-content-center">
+                    <label>Author:</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <input class="inputstyle" type="number" name="author" id="authorid">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <label>Request Date</label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <input class="inputstyle" type="date" name="rdate" id="rdate">
+                </div>
                 <br>
                 <div style="text-align:center ;">
-                <button type="button" value="submit" id="submitButton">Submit</button></div>
+                <button type="button" value="submit" id="submitButton">Submit</button></div></form>
                 <br>
                 <br>
                 <h2 id="error" style="text-align: center; color: red;"></h2>

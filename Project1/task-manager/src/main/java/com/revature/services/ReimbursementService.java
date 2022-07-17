@@ -8,14 +8,19 @@ import com.revature.daos.EmployeeHibernate;
 import com.revature.daos.ReimbursementDAO;
 import com.revature.daos.ReimbursementHibernate;
 import com.revature.exceptions.ItemNotCreatedException;
+import com.revature.exceptions.ItemNotFoundException;
 import com.revature.models.ReimbMain;
-
+import com.revature.models.ReStatus;
 public class ReimbursementService {
 	
 	public ReimbursementDAO rd = new ReimbursementHibernate();
 	
+	
+	
+	
 	public ReimbMain insertReimb (ReimbMain rm) throws ItemNotCreatedException {
 		
+	
 		ReimbMain insertedReimb = rd.insertReimbursement(rm);
 //		if (insertedReimb.getReimb_Id() == -1) {
 //			throw new ItemNotCreatedException();
@@ -25,11 +30,11 @@ public class ReimbursementService {
 		
 	}
 	
-	public ReimbMain getReimbursementsById(int id) throws ItemNotCreatedException {
+	public ReimbMain getReimbursementsById(int id) throws ItemNotFoundException {
 		
 		
 		ReimbMain rm = rd.getReimbursementById(id);
-		if (rm == null) { throw new ItemNotCreatedException();}
+		if (rm == null) { throw new ItemNotFoundException();}
 		
 		return rm;
 		

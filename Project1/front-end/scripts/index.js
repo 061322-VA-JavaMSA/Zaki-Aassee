@@ -1,10 +1,13 @@
 let welcomeH1 = document.getElementById('welcome');
+let username = principal.username;
 
 
-// Different welcome message based on logged in user retrieved from session storage
-if(principal){
-    welcomeH1.innerHTML = `Welcome`;
+
+
+
+if(principal.role=="ADMIN"){
+    welcomeH1.innerHTML = `Welcome` +  ` Admin`;
 } else{
-    welcomeH1.innerHTML = `Welcome to Task Manager!`
+    welcomeH1.innerHTML = `Welcome ` +  username;
 }
 

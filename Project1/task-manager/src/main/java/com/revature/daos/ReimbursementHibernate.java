@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
 
+import com.revature.models.ReStatus;
 import com.revature.models.ReimbMain;
 import com.revature.utils.HibernateUtil;
 
@@ -18,16 +19,19 @@ public class ReimbursementHibernate implements ReimbursementDAO{
 
 	public ReimbMain insertReimbursement(ReimbMain r) {
 		
-		//r.setReimb_Id(-1);
-		
+		r.setStatus("Pending");
+	
 		try (Session s = HibernateUtil.getSessionFactory().openSession()){
 			
 			Transaction tx = s.beginTransaction();
-			int id = (int)s.save(r);
+			//int id = (int)s.save(r);
+			s.save( r);
+		
+			
 			//String username = (String)s.save(r);
 			
 			
-			r.setReimb_Id(id);
+			//r.setReimb_Id(id);
 			
 			tx .commit();
 			
@@ -42,11 +46,9 @@ public class ReimbursementHibernate implements ReimbursementDAO{
 			
 			Transaction tx = s.beginTransaction();
 			s.update("ReimbMain", r);
-			tx.commit();
-		
-			
+			tx.commit();	
 		}
-		
+
 		return r;
 	}
 
@@ -114,6 +116,9 @@ public class ReimbursementHibernate implements ReimbursementDAO{
 		}
 		return null;
 	}
+
+
+
 	
 	
 

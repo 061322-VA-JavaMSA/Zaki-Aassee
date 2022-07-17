@@ -14,11 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dtos.EmployeeDTO;
-import com.revature.exceptions.ItemNotCreatedException;
 import com.revature.exceptions.UserNotCreatedException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.models.Employee;
-import com.revature.models.ReimbMain;
 import com.revature.models.Role;
 import com.revature.services.EmployeeService;
 import com.revature.utils.CorsFix;
@@ -39,7 +37,7 @@ public class EmployeeServlet extends HttpServlet {
 		if (pathInfo == null) {
 			HttpSession session = req.getSession();
 
-			//if (session.getAttribute("user_role") != null && session.getAttribute("user_role").equals(Role.ADMIN)) {
+			if (session.getAttribute("user_role") != null && session.getAttribute("user_role").equals(Role.ADMIN)) {
 
 				List<Employee> employees = es.getEmployees();
 				List<EmployeeDTO> employeeDTO = new ArrayList<>();
@@ -52,9 +50,9 @@ public class EmployeeServlet extends HttpServlet {
 				pw.write(om.writeValueAsString(employeeDTO));
 				pw.close();
 
-//			} else {
-//				resp.sendError(404, "Unauthorized Access");
-//			}
+			} else {
+				resp.sendError(404, "Unauthorized Access");
+			}
 		} else {
 			int id = Integer.parseInt(pathInfo.substring(1));
 
@@ -80,54 +78,48 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		CorsFix.addCorsHeader(req.getRequestURI(), resp);
 		resp.addHeader("Content-Type", "application/json");
-		
-		//String pathInfo = req.getPathInfo();
+
 		InputStream reqbody = req.getInputStream();
-		
+
 		Employee newEmployee = om.readValue(reqbody, Employee.class);
-		
+
 		try {
 			es.createEmployee(newEmployee);
-			
+
 			resp.setStatus(201);
 
 			PrintWriter pw = resp.getWriter();
 			pw.print(newEmployee);
-		
-			
-			
+
 		} catch (UserNotCreatedException e) {
-			// 
+			//
 			System.out.println("Unable to create");
 			e.printStackTrace();
 		}
 
-//		try (PrintWriter pw = resp.getWriter()){
-//			pw.write(om.writeValueAsString(em));
-//			
-//			//es.createEmployee(newEmployee);
-//		
-//			resp.setStatus(201);
-//		} catch (UserNotCreatedException e) {
-//			resp.sendError(400, "Can not create new Employee.");
-//			e.printStackTrace();
-//		}
-
 	}
-	
-	protected void doPut (HttpServletRequest req, HttpServletResponse resp)throws IOException {
-		
+
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		CorsFix.addCorsHeader(req.getRequestURI(), resp);
 		resp.addHeader("Content-Type", "application/json");
-		
-	//	String pathInfo = req.getPathInfo();
+
+
+
+//		String pathInfo = req.getPathInfo();
+	
 		InputStream reqbody = req.getInputStream();
-		
+
 		Employee updateEmployee = om.readValue(reqbody, Employee.class);
 
+		try {
 			es.updateEmployee(updateEmployee);
-			resp.setStatus(201);
-	
+		
+		resp.setStatus(201);
+		}
+		catch (UserNotFoundException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

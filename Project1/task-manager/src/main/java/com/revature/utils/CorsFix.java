@@ -9,7 +9,8 @@ public class CorsFix {
 		rs.addHeader("Access-Control-Allow-Credentials", "true");
 		rs.addHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
 		rs.addHeader("Access-Control-Expose-Headers", "Content-Type, Accept");
-	
+		
+
 		
 	}
 

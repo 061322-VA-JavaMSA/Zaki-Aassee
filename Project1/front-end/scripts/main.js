@@ -15,11 +15,10 @@ if (principalString) {
 
     if (principal.role === 'ADMIN') {
         createNavElement('Users', nav_left, './users.html', null);
-    
         createNavElement('Tasks', nav_left, './tasks.html', null);
         createNavElement('Create Users', nav_left, './newuser.html', null);
-
          createNavElement('Logout', nav_right, null, logout);
+  
         } else {
             createNavElement('New Request', nav_left, './request.html', null);
             createNavElement('My Requests', nav_left, './myrequests.html', null);
@@ -31,8 +30,6 @@ if (principalString) {
 } 
 else {
     createNavElement('Login', nav-right, './login.html', null);
-
-    
 
 }
 

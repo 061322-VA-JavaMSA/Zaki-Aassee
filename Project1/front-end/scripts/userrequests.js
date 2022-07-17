@@ -7,8 +7,13 @@ if(!principal){
 
 
 
+
 let infobtn = document.getElementById('info');
+
 infobtn.addEventListener('click', getTasks);
+
+
+
 
 async function getTasks(){
 
@@ -27,6 +32,8 @@ async function getTasks(){
 function populateTable1(data){
     let tableBody = document.getElementById('tasks-tbody');
 
+
+  
     data.forEach(task =>{
         let tr = document.createElement('tr');
         let tdId = document.createElement('td');
@@ -52,8 +59,9 @@ function populateTable1(data){
        
 
         tableBody.append(tr);
-
+    
 
     })
+    document.getElementById('info').disabled=true;
 }
 

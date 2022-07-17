@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.revature.daos.EmployeeDAO;
 import com.revature.daos.EmployeeHibernate;
-import com.revature.daos.EmployeePostgres;
+
 import com.revature.exceptions.UserNotCreatedException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.models.Employee;
@@ -15,6 +15,7 @@ public class EmployeeService {
 	
 	public Employee createEmployee(Employee em ) throws UserNotCreatedException{
 		em.setRole(Role.BASIC_USER);
+		em.setFirstname("John"); // by defult the firstname will be John , though we set another one in the request time. Harded coded here
 		
 		Employee createdEmployee = ed.insertEmployee(em);
 		
@@ -44,10 +45,19 @@ public class EmployeeService {
 		return em;
 		
 	}
-	public Employee updateEmployee (Employee em) {
+	public Employee updateEmployee (Employee em) throws UserNotFoundException{
 		Employee updated = ed.updateEmployee(em);
 		
 		return updated;
+		
+	}
+	
+	public Employee getEmployeeByUsername (String username) {
+		
+		Employee em = ed.getEmployeeByUsername(username);
+		
+		return em;
+		
 		
 	}
 }

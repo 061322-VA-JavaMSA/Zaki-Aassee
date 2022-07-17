@@ -9,7 +9,7 @@ public class EmployeeDTO { // Data Transfer object, represent the resoure withou
 	
 	
 	private int id;
-	private String username ;
+	private String userName ;
 	private String password;
 	private String firstname;
 	private String lastname;
@@ -23,7 +23,7 @@ public class EmployeeDTO { // Data Transfer object, represent the resoure withou
 	
 	public EmployeeDTO(Employee em) {
 		id = em.getId();
-		username = em.getUsername();
+		userName = em.getUsername();
 		password= em.getPassword();
 		firstname = em.getFirstname();
 		lastname = em.getLastname();
@@ -35,7 +35,7 @@ public class EmployeeDTO { // Data Transfer object, represent the resoure withou
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, firstname, id, lastname, password, role, username);
+		return Objects.hash(email, firstname, id, lastname, password, role, userName);
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class EmployeeDTO { // Data Transfer object, represent the resoure withou
 		EmployeeDTO other = (EmployeeDTO) obj;
 		return Objects.equals(email, other.email) && Objects.equals(firstname, other.firstname) && id == other.id
 				&& Objects.equals(lastname, other.lastname) && Objects.equals(password, other.password)
-				&& role == other.role && Objects.equals(username, other.username);
+				&& role == other.role && Objects.equals(userName, other.userName);
 	}
 
 	public int getId() {
@@ -61,11 +61,11 @@ public class EmployeeDTO { // Data Transfer object, represent the resoure withou
 	}
 
 	public String getUsername() {
-		return username;
+		return userName;
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.userName = username;
 	}
 
 	public String getPassword() {
@@ -110,7 +110,7 @@ public class EmployeeDTO { // Data Transfer object, represent the resoure withou
 
 	@Override
 	public String toString() {
-		return "EmployeeDTO [id=" + id + ", username=" + username + ", password=" + password + ", firstname="
+		return "EmployeeDTO [id=" + id + ", username=" + userName + ", password=" + password + ", firstname="
 				+ firstname + ", lastname=" + lastname + ", email=" + email + ", role=" + role + "]";
 	}
 	

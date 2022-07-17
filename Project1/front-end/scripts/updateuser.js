@@ -14,9 +14,12 @@ async function createUser(){
 
     let response = await fetch(`${apiUrl}/employee`, {
         method: 'PUT',
-        credentials: 'include',
+       // credentials: 'include',
+     
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+           'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept':   '*'
+        
         },
         body: JSON.stringify({
             "id": `${userid}`,

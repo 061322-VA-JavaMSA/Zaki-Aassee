@@ -1,5 +1,8 @@
 let reqsubmit = document.getElementById('submitButton');
+
+
 reqsubmit.addEventListener('click', request);
+
 let apiUrl="http://localhost:8081/task-manager";
 
 async function request(){
@@ -8,6 +11,10 @@ async function request(){
     let ra=document.getElementById('ramount').value;
     let rd = document.getElementById('rdate').value;
     let rdes = document.getElementById('rd').value;
+    let requestor = document.getElementById("authorid").value;
+
+    //let author =1;
+
 
     console.log('request');
 
@@ -22,17 +29,21 @@ async function request(){
             "descripion": `${rdes}`,
             "amount": `${ra}`,
             "sub_Date": `${rd}`,
-            "receipt": `${rt}`
-
-        })
+            "receipt": `${rt}`,
+            "author":{
+                "id": `${requestor}`}
+            })
 
     }); 
+
+
     if (response.status == 201){
        // console.log('created');
        window.alert('created');
+       window.location.href="./request.html";
 
     } else {
-        console.log('couldnot ');
+        window.alert("Couldn't Submit Request!")
     }
 
     

@@ -33,7 +33,7 @@ async function login(){
          */
          sessionStorage.setItem('principal', JSON.stringify(data));
         // redirect to the homepage on success
-        window.location.href="./users.html";
+        window.location.href="./index.html";
     } else{
         console.log('Unable to login.')
         document.getElementById('error').innerHTML="Incorrecnt Credentials!";

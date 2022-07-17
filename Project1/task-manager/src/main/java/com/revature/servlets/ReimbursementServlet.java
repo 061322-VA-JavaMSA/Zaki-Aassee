@@ -35,7 +35,7 @@ public class ReimbursementServlet extends HttpServlet {
 	private ReimbursementService rs = new ReimbursementService();
 	private ObjectMapper om = new ObjectMapper();
 	
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
 		CorsFix.addCorsHeader(req.getRequestURI(), resp);
 		resp.addHeader("Content-Type", "application/json");
 
@@ -46,36 +46,28 @@ public class ReimbursementServlet extends HttpServlet {
 			HttpSession session = req.getSession();
 			List< ReimbMain> reimbursements = rs.getReimbursements();
 			List<ReimbursementDTO> reimbDTO = new ArrayList<>();
-			
 			reimbursements.forEach(rm -> reimbDTO.add(new ReimbursementDTO(rm)));
-			
-			PrintWriter pw = resp.getWriter();
-			pw.write(om.writeValueAsString(reimbDTO));
-			
-			pw.close();
-			
-			
+			PrintWriter pw = resp.getWriter(); pw.write(om.writeValueAsString(reimbDTO));pw.close();
+				
 		} else {
 			int id = Integer.parseInt(pathInfo.substring(1)
 					);
 			
-			try (PrintWriter pw = resp.getWriter()){
+			 PrintWriter pw = resp.getWriter();
+			 try {
 				ReimbMain rm = rs.getReimbursementsById(id);
-				ReimbursementDTO rDTO = new ReimbursementDTO();
+				ReimbursementDTO rDTO = new ReimbursementDTO(rm);
 				pw.write(om.writeValueAsString(rDTO));
 				
 				resp.setStatus(200);
 			}
-			 catch (ItemNotCreatedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			 catch (ItemNotFoundException e) {
+				 e.printStackTrace();
+				 
+			 }
 		}
 
-		
 	}
-	
 	protected void doPost (HttpServletRequest req , HttpServletResponse resp) throws IOException, ServletException {
 		CorsFix.addCorsHeader(req.getRequestURI(), resp);
 		resp.addHeader("Content-Type", "application/json");
@@ -99,6 +91,7 @@ public class ReimbursementServlet extends HttpServlet {
 	protected void doPut (HttpServletRequest req, HttpServletResponse resp)throws IOException {
 		CorsFix.addCorsHeader(req.getRequestURI(), resp);
 		resp.addHeader("Content-Type", "application/json");
+		
 
 		//String pathInfo = req.getPathInfo();
 		InputStream reqbody = req.getInputStream();
@@ -114,6 +107,7 @@ public class ReimbursementServlet extends HttpServlet {
 	protected void doDelete (HttpServletResponse resp, HttpServletRequest req) throws IOException, ItemNotFoundException{
 		CorsFix.addCorsHeader(req.getRequestURI(), resp);
 		resp.addHeader("Content-Type", "application/json");
+		
 
 		String pathInfo = req.getPathInfo();
 		InputStream reqbody = req.getInputStream();

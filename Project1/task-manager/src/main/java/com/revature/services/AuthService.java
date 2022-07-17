@@ -2,7 +2,7 @@ package com.revature.services;
 
 import com.revature.daos.EmployeeDAO;
 import com.revature.daos.EmployeeHibernate;
-import com.revature.daos.EmployeePostgres;
+
 import com.revature.exceptions.LoginException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.models.Employee;

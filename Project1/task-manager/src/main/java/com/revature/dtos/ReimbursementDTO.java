@@ -1,10 +1,10 @@
 package com.revature.dtos;
 
-import java.sql.Blob;
-import java.sql.Timestamp;
-import java.time.LocalDate;
+
+import java.sql.Date;
+
 import java.util.Objects;
-import com.fasterxml.jackson.datatype.jsr310.deser.key.*;
+
 import com.revature.models.Employee;
 import com.revature.models.ReimbMain;
 
@@ -12,15 +12,23 @@ import com.revature.models.ReimbMain;
 public class ReimbursementDTO {
 	private int id;
 	private int amount ;
-	private Timestamp submittted;
-	private Timestamp resolved;
+	private Date submittted;
+	private Date resolved;
 	private String description;
 	private String a;
 	private Employee reimb_author;
 	private int reimb_resolver;
 	private int reimb_status_id;
 	private int reimb_type_id;
+	private String status;
 	
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public ReimbursementDTO() {
 		super();
 	}
@@ -28,14 +36,12 @@ public class ReimbursementDTO {
 		id = rm.getReimb_Id();
 		amount = rm.getAmount();
 		submittted= rm.getSub_Date();
-	
 		resolved= rm.getRes_Date();
-	
 		description= rm.getDescripion();
 		//reimb_author = rm.getAuthor();
 		a = rm.getReceipt();
-		
-		
+		status= rm.getStatus();
+		reimb_author = rm.getAuthor();
 		
 		
 		
@@ -61,22 +67,22 @@ public class ReimbursementDTO {
 	}
 
 
-	public Timestamp getSubmitted() {
+	public Date getSubmitted() {
 		return submittted;
 	}
 
 
-	public void setSubmitted(Timestamp submitted) {
+	public void setSubmitted(Date submitted) {
 		this.submittted = submitted;
 	}
 
 
-	public Timestamp getResolved() {
+	public Date getResolved() {
 		return resolved;
 	}
 
 
-	public void setResolved(Timestamp resolved) {
+	public void setResolved(Date resolved) {
 		this.resolved = resolved;
 	}
 
@@ -143,8 +149,7 @@ public class ReimbursementDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(amount, description, id, a, reimb_author, reimb_resolver, reimb_status_id,
-				reimb_type_id, resolved, submittted);
+		return Objects.hash(status);
 	}
 
 
@@ -157,11 +162,7 @@ public class ReimbursementDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		ReimbursementDTO other = (ReimbursementDTO) obj;
-		return amount == other.amount && Objects.equals(description, other.description) && id == other.id
-				&& Objects.equals(a, other.a) && reimb_author == other.reimb_author
-				&& reimb_resolver == other.reimb_resolver && reimb_status_id == other.reimb_status_id
-				&& reimb_type_id == other.reimb_type_id && Objects.equals(resolved, other.resolved)
-				&& Objects.equals(submittted, other.submittted);
+		return Objects.equals(status, other.status);
 	}
 
 

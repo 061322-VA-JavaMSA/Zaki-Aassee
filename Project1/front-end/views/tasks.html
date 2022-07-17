@@ -30,33 +30,38 @@
                     <th scope="col">Reimb_ID</th>
                     <th scope="col">Description</th>
                     <th scope="col">Submitted Date</th>
-                    <th socop="col"> Resolved Date</th>
+                    <th socop="col"> Amount</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Requestor</th>
                 </tr>
             </thead>
             <tbody id="tasks-tbody">
-                <!-- <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td> <button type="button" id="Approve" style="color:green">Approve</button><button type="button" id="Reject" style="color: red;">Reject</button></td>
-                </tr> -->
+               
+
+
             
             </tbody>
         </table>
         <div class="d-flex justify-content-center">
             <input class="btn btn-outline-secondary" type="button" value="See All Tasks" id="info">
+            <input type="button" value="Refresh Tasks" id="refresh">
             <!-- <button type="button" id="rr" style="background-color: white;"><a href="/views/request.html" style="text-decoration:none ;">Request</a></button> -->
-          <div id="approve" ></div>
+         
             
         </div>
-      
+        <br>
+       
+        <div class="d-flex justify-content-center">
+            <label>Reimbursement ID?:</label>
         </div>
-      
+        <div class="d-flex justify-content-center">
+            <input class="inputstyle" type="number" name="reimbid" id="reimbId"> <br>
+            <button type="button" id="accept">Approve</button> <button type="button" id="reject">Reject</button>
+        </div> 
     </main>
+
+        </div>
+        
     <footer class="bg-light text-center fixed-bottom">
         <div class="text-center p-3">
             <i>Project1-Demo &copy; <b>Revature</b></i>
@@ -66,9 +71,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+       
+
+      
     <script src="../scripts/main.js"></script>
     <script src="/scripts/tasks.js"></script>
-    <script src="/scripts/action.js"></script>
+    <!-- <script src="../scripts/approv.js"></script> -->
+   
  
 </body>
 
