@@ -1,9 +1,9 @@
-// Checks if a user is already logged in, if yes redirect to homepage
+
 if(principal){
     window.location.href="./index.html";
 }
 
-// Setting up event listener for login button
+
 let loginButton = document.getElementById('submitButton');
 loginButton.addEventListener('click', login);
 

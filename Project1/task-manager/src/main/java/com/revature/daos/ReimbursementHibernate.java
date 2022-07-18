@@ -48,7 +48,7 @@ public class ReimbursementHibernate implements ReimbursementDAO{
 		try (Session s = HibernateUtil.getSessionFactory().openSession()){
 			
 			Transaction tx = s.beginTransaction();
-			s.update("ReimbMain", r);
+			s.update(r);
 			tx.commit();	
 		}
 

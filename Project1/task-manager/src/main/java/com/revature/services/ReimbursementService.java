@@ -16,7 +16,9 @@ import com.revature.exceptions.ItemNotFoundException;
 import com.revature.models.ReimbMain;
 import com.revature.models.ReStatus;
 public class ReimbursementService {
-	private static Logger log = LogManager.getLogger(ReimbMain.class);
+	//private static Logger log = LogManager.getLogger(ReimbMain.class);
+	private static final Logger log = LogManager.getLogger();
+	
 	
 	public ReimbursementDAO rd = new ReimbursementHibernate();
 	

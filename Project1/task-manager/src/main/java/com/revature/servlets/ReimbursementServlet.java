@@ -50,6 +50,7 @@ public class ReimbursementServlet extends HttpServlet {
 			List< ReimbMain> reimbursements = rs.getReimbursements();
 			List<ReimbursementDTO> reimbDTO = new ArrayList<>();
 			reimbursements.forEach(rm -> reimbDTO.add(new ReimbursementDTO(rm)));
+			log.info("reimbursement retrieved");
 			PrintWriter pw = resp.getWriter(); pw.write(om.writeValueAsString(reimbDTO));pw.close();
 				
 		} else {
@@ -61,7 +62,7 @@ public class ReimbursementServlet extends HttpServlet {
 				ReimbMain rm = rs.getReimbursementsById(id);
 				ReimbursementDTO rDTO = new ReimbursementDTO(rm);
 				pw.write(om.writeValueAsString(rDTO));
-				log.info("logged");
+				log.info("reimbursement retrieved");
 				resp.setStatus(200);
 			}
 			 catch (ItemNotFoundException | SQLException e) {
@@ -82,7 +83,7 @@ public class ReimbursementServlet extends HttpServlet {
 		ReimbMain newReimb = om.readValue(reqBody, ReimbMain.class);
 		
 		try {
-			
+			log.info("reimbursement created");
 			rs.insertReimb(newReimb);
 			resp.setStatus(201);
 			

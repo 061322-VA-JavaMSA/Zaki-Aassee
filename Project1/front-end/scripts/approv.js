@@ -38,10 +38,12 @@ async function ApproveReimbursements (){
             "reimb_Id": `${data.reimb_Id}`,
             "status": "Approved",
             "amount":`${data.amount}`,
-            "descripion": `${data.descripion}`,
+            "sub_Date": `${data.submitted}`,
+            "descripion": `${data.description}`,
             "author": {
                 "id": `${data.reimb_author.id}`
             }
+
 
         })
 
@@ -94,7 +96,8 @@ async function RejectReimbursement(){
             "reimb_Id": `${data.reimb_Id}`,
             "status": "Rejected",
             "amount":`${data.amount}`,
-            "descripion": `${data.descripion}`,
+            "sub_Date": `${data.submitted}`,
+            "descripion": `${data.description}`,
             "author": {
                 "id": `${data.reimb_author.id}`
             }

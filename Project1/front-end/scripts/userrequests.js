@@ -45,7 +45,7 @@ function populateTable1(data){
        
         tdId.innerHTML= task.reimb_Id;
         tdDes.innerHTML= task.description;
-        tdSubDate.innerHTML= new Date(task.submitted).toLocaleDateString();
+        tdSubDate.innerHTML= new Date(task.submitted).toDateString();
         //tdResDate.innerHTML= new Date(task.resolved).toLocaleDateString();
         tdStatus.innerHTML= task.status;
         tdAuthor.innerHTML= task.reimb_author.username;

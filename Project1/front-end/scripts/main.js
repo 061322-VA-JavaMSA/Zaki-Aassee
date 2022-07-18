@@ -22,9 +22,7 @@ if (principalString) {
             createNavElement('New Request', nav_left, './request.html', null);
             createNavElement('My Requests', nav_left, './myrequests.html', null);
             createNavElement('Update My Info', nav_left, './updateuser.html', null);
-            createElement(principal.role, nav_right );
-
-
+           // createElement(principal.role, nav_right );
             createNavElement('Logout', nav_right, null, logout);
         }
 } 

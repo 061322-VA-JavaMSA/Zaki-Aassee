@@ -32,15 +32,15 @@ public class AuthServlet extends HttpServlet{
 		
 		
 		try {
-			Employee current = as.login(username, password);
+			Employee principal = as.login(username, password);
 			HttpSession session = req.getSession();
-			session.setAttribute("ers_user_id" , current.getId());
-			session.setAttribute("user_role", current.getRole());
+			session.setAttribute("ers_user_id" , principal.getId());
+			session.setAttribute("user_role", principal.getRole());
 			
 			// chorme cookie problme solves
 			String cookie = resp.getHeader("Set-Cookie") + "; SameSite=None; Secure";
 			resp.setHeader("Set-Cookie", cookie);;
-			EmployeeDTO currentDTO = new EmployeeDTO(current);
+			EmployeeDTO currentDTO = new EmployeeDTO(principal);
 			try (PrintWriter pw = resp.getWriter()){
 				pw.write(om.writeValueAsString(currentDTO));
 				resp.setStatus(200);
