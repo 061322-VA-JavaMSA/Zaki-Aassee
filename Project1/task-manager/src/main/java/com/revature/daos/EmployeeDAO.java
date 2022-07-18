@@ -3,6 +3,7 @@ package com.revature.daos;
 
 import java.util.List;
 import com.revature.models.Employee;
+import com.revature.models.Role;
 
 
 public interface EmployeeDAO {
@@ -12,6 +13,8 @@ public interface EmployeeDAO {
 	Employee getEmployeeByUsername(String username);
 	//Employee getEmployeeByPassword (String password);
 	Employee updateEmployee(Employee em);
+	Role role (Role r);
+	
 	
 
 	

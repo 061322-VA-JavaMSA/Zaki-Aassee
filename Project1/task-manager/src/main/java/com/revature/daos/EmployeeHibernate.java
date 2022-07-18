@@ -93,4 +93,10 @@ public class EmployeeHibernate implements EmployeeDAO {
 
 	}
 
+	@Override
+	public Role role(Role r) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -3,6 +3,7 @@ package com.revature.servlets;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.type.descriptor.java.LocalDateJavaType;
 import org.hibernate.type.descriptor.java.LocalDateTimeJavaType;
 
@@ -29,7 +32,7 @@ import com.revature.utils.CorsFix;
 
 public class ReimbursementServlet extends HttpServlet {
 	
-	
+	Logger log = LogManager.getLogger(ReimbursementServlet.class);
 	private static final long serialVersionUID = 1L;
 	
 	private ReimbursementService rs = new ReimbursementService();
@@ -58,11 +61,12 @@ public class ReimbursementServlet extends HttpServlet {
 				ReimbMain rm = rs.getReimbursementsById(id);
 				ReimbursementDTO rDTO = new ReimbursementDTO(rm);
 				pw.write(om.writeValueAsString(rDTO));
-				
+				log.info("logged");
 				resp.setStatus(200);
 			}
-			 catch (ItemNotFoundException e) {
+			 catch (ItemNotFoundException | SQLException e) {
 				 e.printStackTrace();
+				 resp.setStatus(404);
 				 
 			 }
 		}

@@ -1,11 +1,14 @@
 package com.revature.daos;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
 
+import com.revature.exceptions.ItemNotCreatedException;
+import com.revature.exceptions.ItemNotFoundException;
 import com.revature.models.ReStatus;
 import com.revature.models.ReimbMain;
 import com.revature.utils.HibernateUtil;
@@ -94,7 +97,7 @@ public class ReimbursementHibernate implements ReimbursementDAO{
 	}
 
 	@Override
-	public ReimbMain getReimbursementById(int id) {
+	public ReimbMain getReimbursementById(int id) throws ItemNotFoundException {
 		ReimbMain rm = null;
 		
 		try (Session s = HibernateUtil.getSessionFactory().openSession();){
