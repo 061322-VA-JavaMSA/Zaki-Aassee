@@ -8,6 +8,7 @@ import org.hibernate.exception.ConstraintViolationException;
 //import org.hibernate.sql.ast.tree.predicate.Predicate;
 
 import com.revature.models.Employee;
+import com.revature.models.Role;
 import com.revature.utils.HibernateUtil;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -19,7 +20,7 @@ public class EmployeeHibernate implements EmployeeDAO {
 
 	public Employee insertEmployee(Employee em) {
 
-		// em.setId(-1);
+		em.setRole(Role.BASIC_USER);
 		try (Session s = HibernateUtil.getSessionFactory().openSession()) {
 			Transaction tx = s.beginTransaction();
 			// int id = (int)s.save(em);
@@ -80,6 +81,7 @@ public class EmployeeHibernate implements EmployeeDAO {
 	}
 
 	public Employee updateEmployee(Employee em) {
+		em.setRole(Role.BASIC_USER);
 		try (Session s = HibernateUtil.getSessionFactory().openSession()) {
 
 			Transaction tx = s.beginTransaction();

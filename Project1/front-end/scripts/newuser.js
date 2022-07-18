@@ -14,7 +14,7 @@ async function createUser(){
 
     let response = await fetch(`${apiUrl}/employee`, {
         method: 'POST',
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },

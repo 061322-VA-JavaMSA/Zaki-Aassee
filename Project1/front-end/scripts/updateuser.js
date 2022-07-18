@@ -18,13 +18,15 @@ async function createUser(){
      
         headers: {
            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept':   '*'
+            // 'Accept':   '*'
         
         },
         body: JSON.stringify({
             "id": `${userid}`,
             "username": `${username}`,
             "password": `${passed}`,
+            
+
           
          
             

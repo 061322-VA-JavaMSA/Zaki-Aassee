@@ -37,8 +37,7 @@ public class EmployeeServlet extends HttpServlet {
 		if (pathInfo == null) {
 			HttpSession session = req.getSession();
 
-			if (session.getAttribute("user_role") != null && session.getAttribute("user_role").equals(Role.ADMIN)) {
-
+			//if (session.getAttribute("user_role") != null && session.getAttribute("user_role").equals(Role.ADMIN)) {
 				List<Employee> employees = es.getEmployees();
 				List<EmployeeDTO> employeeDTO = new ArrayList<>();
 
@@ -51,9 +50,10 @@ public class EmployeeServlet extends HttpServlet {
 				pw.close();
 
 			} else {
-				resp.sendError(404, "Unauthorized Access");
+				resp.sendError(404, "Unauthorized AAccess");
 			}
-		} else {
+	//	} 
+	//else {
 			int id = Integer.parseInt(pathInfo.substring(1));
 
 			try (PrintWriter pw = resp.getWriter()) {
@@ -73,7 +73,7 @@ public class EmployeeServlet extends HttpServlet {
 
 		}
 
-	}
+	//}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		CorsFix.addCorsHeader(req.getRequestURI(), resp);

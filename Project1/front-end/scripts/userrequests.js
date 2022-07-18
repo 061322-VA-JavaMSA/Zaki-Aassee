@@ -1,10 +1,10 @@
 if(!principal){
     window.location.href="./index.html";
 }
+
 // else{
 //     getTasks();
 // }
-
 
 
 
@@ -22,7 +22,7 @@ async function getTasks(){
     });
     if (response.status==200){
         let data = await response.json();
-
+       
         populateTable1(data);
     }else {
         console.log("Cann't get");
@@ -33,7 +33,7 @@ function populateTable1(data){
     let tableBody = document.getElementById('tasks-tbody');
 
 
-  
+ 
     data.forEach(task =>{
         let tr = document.createElement('tr');
         let tdId = document.createElement('td');
@@ -41,13 +41,14 @@ function populateTable1(data){
         let tdSubDate = document.createElement('td');
         //let tdResDate= document.createElement('td');
         let tdStatus = document.createElement('td');
+        let tdAuthor = document.createElement('td');
        
         tdId.innerHTML= task.reimb_Id;
         tdDes.innerHTML= task.description;
         tdSubDate.innerHTML= new Date(task.submitted).toLocaleDateString();
         //tdResDate.innerHTML= new Date(task.resolved).toLocaleDateString();
         tdStatus.innerHTML= task.status;
-       
+        tdAuthor.innerHTML= task.reimb_author.username;
        
     
 
@@ -56,12 +57,14 @@ function populateTable1(data){
         tr.append(tdSubDate);
         //tr.append(tdResDate);
         tr.append(tdStatus);
+        tr.append(tdAuthor);
        
 
         tableBody.append(tr);
     
 
     })
+    
     document.getElementById('info').disabled=true;
 }
 

@@ -20,7 +20,7 @@ async function request(){
 
     let response = await fetch (`${apiUrl}/reimbursement`, {
         method: 'POST',
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },

@@ -14,7 +14,7 @@ async function login(){
 
     let response = await fetch(`${apiUrl}/auth`,{
         method: 'POST',
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },

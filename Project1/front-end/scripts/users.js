@@ -9,7 +9,7 @@ else{
 async function getUsers(){
 
     let response = await fetch(`${apiUrl}/employee`, {
-        credentials: 'include'
+        // credentials: 'include'
     });
 
     if(response.status == 200){

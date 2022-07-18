@@ -1,5 +1,5 @@
 let welcomeH1 = document.getElementById('welcome');
-let username = principal.username;
+var username = principal.username;
 
 
 
